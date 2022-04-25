@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         window?.backgroundColor = .white
         
-        let navigationController = UINavigationController(rootViewController: MainSearchViewController())
+        let navigationController = UINavigationController(rootViewController: MainSearchViewController(viewModel: DefaultSearchViewModel()))
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }

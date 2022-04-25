@@ -12,6 +12,9 @@
 		E37AB4E328154FCD002C2F5D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37AB4E228154FCD002C2F5D /* SceneDelegate.swift */; };
 		E37AB4E828155001002C2F5D /* MainSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37AB4E528155001002C2F5D /* MainSearchViewController.swift */; };
 		E37AB4E928155001002C2F5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E37AB4E728155001002C2F5D /* Assets.xcassets */; };
+		E3CB656B2816C2FA0007B0B8 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CB656A2816C2FA0007B0B8 /* SearchViewModel.swift */; };
+		E3CB656D2816C3750007B0B8 /* SearchItemCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CB656C2816C3750007B0B8 /* SearchItemCellModel.swift */; };
+		E3CB65712816C51A0007B0B8 /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CB65702816C51A0007B0B8 /* SearchResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		E37AB4E228154FCD002C2F5D /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E37AB4E528155001002C2F5D /* MainSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainSearchViewController.swift; sourceTree = "<group>"; };
 		E37AB4E728155001002C2F5D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E3CB656A2816C2FA0007B0B8 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		E3CB656C2816C3750007B0B8 /* SearchItemCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItemCellModel.swift; sourceTree = "<group>"; };
+		E3CB65702816C51A0007B0B8 /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,7 +50,6 @@
 				79584A6446744220DC51211D /* Pods-MovieSearchApp.debug.xcconfig */,
 				E0048BB6C8BE13D7F8FE6099 /* Pods-MovieSearchApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -80,6 +85,7 @@
 				E37AB4CD28154F9A002C2F5D /* AppDelegate.swift */,
 				E37AB4DB28154F9D002C2F5D /* Info.plist */,
 				E37AB4E128154FCD002C2F5D /* Application */,
+				E3CB656E2816C4C60007B0B8 /* Network */,
 				E37AB4E428155001002C2F5D /* Domain */,
 				E37AB4E628155001002C2F5D /* Resoucres */,
 			);
@@ -98,6 +104,8 @@
 			isa = PBXGroup;
 			children = (
 				E37AB4E528155001002C2F5D /* MainSearchViewController.swift */,
+				E3CB656A2816C2FA0007B0B8 /* SearchViewModel.swift */,
+				E3CB656C2816C3750007B0B8 /* SearchItemCellModel.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -108,6 +116,22 @@
 				E37AB4E728155001002C2F5D /* Assets.xcassets */,
 			);
 			path = Resoucres;
+			sourceTree = "<group>";
+		};
+		E3CB656E2816C4C60007B0B8 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				E3CB656F2816C4ED0007B0B8 /* Model */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		E3CB656F2816C4ED0007B0B8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E3CB65702816C51A0007B0B8 /* SearchResponse.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,8 +247,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3CB656D2816C3750007B0B8 /* SearchItemCellModel.swift in Sources */,
 				E37AB4CE28154F9A002C2F5D /* AppDelegate.swift in Sources */,
+				E3CB65712816C51A0007B0B8 /* SearchResponse.swift in Sources */,
 				E37AB4E328154FCD002C2F5D /* SceneDelegate.swift in Sources */,
+				E3CB656B2816C2FA0007B0B8 /* SearchViewModel.swift in Sources */,
 				E37AB4E828155001002C2F5D /* MainSearchViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
