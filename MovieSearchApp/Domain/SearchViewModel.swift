@@ -41,6 +41,8 @@ final class DefaultSearchViewModel: SearchViewModel {
     
     private let cellModelsRelay = BehaviorRelay<[SearchItemCellModel]?>(value: nil)
     private let viewActionRelay = PublishRelay<ViewAction>()
+    private let fetchStatusTypeRelay = BehaviorRelay<FetchStatusType>(value: .none(.initial))
+    private let fetch = PublishRelay<FetchType>()
     
     var cellModelsObs: Observable<[SearchItemCellModel]> {
         cellModelsRelay.map { $0 ?? [] }
@@ -52,6 +54,10 @@ final class DefaultSearchViewModel: SearchViewModel {
     
     var viewActionObs: Observable<ViewAction> {
         viewActionRelay.asObservable()
+    }
+    
+    var fetchStatusTypeObs: Observable<FetchStatusType> {
+        fetchStatusTypeRelay.asObservable()
     }
     
     // MARK: - paging
@@ -68,14 +74,45 @@ final class DefaultSearchViewModel: SearchViewModel {
     
     // MARK: - Private
     
-    private func bindFetch() {}
+    private func bindFetch() {
+        fetch
+            .do(onNext: { [weak self] fetchType in
+                self?.fetchStatusTypeRelay.accept(.fetching(fetchType))
+            })
+            .flatMapLatest { [weak self] _ -> Observable<Result<[SearchItemCellModel], Error>> in
+                guard let self = self else { return .empty() }
+                return API.search(self.query)
+                    .asObservable()
+                    .map { [weak self] in
+                        $0.items.compactMap { SearchItemCellModel(parentViewModel: self, model: $0) }
+                    }
+                    .map { .success($0) }
+                    .catch { .just((.failure($0))) }
+            }
+            .subscribe(onNext: { [weak self] result in
+                guard let self = self else { return }
+                let fetchType = self.fetchStatusTypeRelay.value.type
+                switch result {
+                case .success(let models):
+                    let list = fetchType == .more ? (self.cellModelsRelay.value ?? []) + models : models
+                    self.cellModelsRelay.accept(list)
+                    self.fetchStatusTypeRelay.accept(.success(fetchType))
+                case .failure(let error):
+                    self.fetchStatusTypeRelay.accept(.failure(fetchType, error: error))
+                }
+            })
+            .disposed(by: disposeBag)
+    }
 }
+
 // MARK: - INPUT. View event methods
 
 extension DefaultSearchViewModel {
     func loadMore() {}
     
-    func refresh() {}
+    func refresh() {
+        fetch.accept(.refresh)
+    }
     
     func search(_ query: String?) {
         guard let query = query, query.count > 1 else { return }

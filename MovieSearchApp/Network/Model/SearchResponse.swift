@@ -27,7 +27,7 @@ struct SearchResponse: Decodable {
         let image: String?
         let director: String?
         let actor: String?
-        let userRating: Int?
+        let userRating: String?
         let link: String?
         
         enum Keys: String, CodingKey {
@@ -45,7 +45,7 @@ struct SearchResponse: Decodable {
             image = try? container.decodeIfPresent(String.self, forKey: .image)
             director = try container.decodeIfPresent(String.self, forKey: .director) ?? ""
             actor = try container.decodeIfPresent(String.self, forKey: .actor) ?? ""
-            userRating = try container.decodeIfPresent(Int.self, forKey: .userRating) ?? 0
+            userRating = try container.decodeIfPresent(String.self, forKey: .userRating) ?? ""
             link = try container.decodeIfPresent(String.self, forKey: .link) ?? ""
         }
     }
