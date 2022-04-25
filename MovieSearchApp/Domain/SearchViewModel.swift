@@ -117,7 +117,7 @@ extension DefaultSearchViewModel {
     func search(_ query: String?) {
         guard let query = query, query.count > 1 else { return }
         self.query = query
-        fetch.accept(.initial)
+        refresh()
     }
     
     func didSelectItem(_ model: SearchItemCellModel) {}
