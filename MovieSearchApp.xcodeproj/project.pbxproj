@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		BC602B2EEABBBFB10D793012 /* Pods_MovieSearchApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4596A6E9736FF84FD7381B1F /* Pods_MovieSearchApp.framework */; };
+		E362FD122816D2FA000D4FB1 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = E362FD112816D2FA000D4FB1 /* API.swift */; };
+		E362FD142816D33A000D4FB1 /* APITarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E362FD132816D33A000D4FB1 /* APITarget.swift */; };
+		E362FD182816D406000D4FB1 /* FetchStatusType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E362FD172816D406000D4FB1 /* FetchStatusType.swift */; };
 		E37AB4CE28154F9A002C2F5D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37AB4CD28154F9A002C2F5D /* AppDelegate.swift */; };
 		E37AB4E328154FCD002C2F5D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37AB4E228154FCD002C2F5D /* SceneDelegate.swift */; };
 		E37AB4E828155001002C2F5D /* MainSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37AB4E528155001002C2F5D /* MainSearchViewController.swift */; };
@@ -21,6 +24,9 @@
 		4596A6E9736FF84FD7381B1F /* Pods_MovieSearchApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieSearchApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		79584A6446744220DC51211D /* Pods-MovieSearchApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieSearchApp.debug.xcconfig"; path = "Target Support Files/Pods-MovieSearchApp/Pods-MovieSearchApp.debug.xcconfig"; sourceTree = "<group>"; };
 		E0048BB6C8BE13D7F8FE6099 /* Pods-MovieSearchApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieSearchApp.release.xcconfig"; path = "Target Support Files/Pods-MovieSearchApp/Pods-MovieSearchApp.release.xcconfig"; sourceTree = "<group>"; };
+		E362FD112816D2FA000D4FB1 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		E362FD132816D33A000D4FB1 /* APITarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITarget.swift; sourceTree = "<group>"; };
+		E362FD172816D406000D4FB1 /* FetchStatusType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchStatusType.swift; sourceTree = "<group>"; };
 		E37AB4CA28154F9A002C2F5D /* MovieSearchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieSearchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E37AB4CD28154F9A002C2F5D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E37AB4DB28154F9D002C2F5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -61,6 +67,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E362FD152816D3C6000D4FB1 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				E362FD162816D3F4000D4FB1 /* Utils */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		E362FD162816D3F4000D4FB1 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E362FD172816D406000D4FB1 /* FetchStatusType.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		E37AB4C128154F9A002C2F5D = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +109,7 @@
 				E37AB4E128154FCD002C2F5D /* Application */,
 				E3CB656E2816C4C60007B0B8 /* Network */,
 				E37AB4E428155001002C2F5D /* Domain */,
+				E362FD152816D3C6000D4FB1 /* Helper */,
 				E37AB4E628155001002C2F5D /* Resoucres */,
 			);
 			path = MovieSearchApp;
@@ -122,6 +145,8 @@
 			isa = PBXGroup;
 			children = (
 				E3CB656F2816C4ED0007B0B8 /* Model */,
+				E362FD112816D2FA000D4FB1 /* API.swift */,
+				E362FD132816D33A000D4FB1 /* APITarget.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -250,9 +275,12 @@
 				E3CB656D2816C3750007B0B8 /* SearchItemCellModel.swift in Sources */,
 				E37AB4CE28154F9A002C2F5D /* AppDelegate.swift in Sources */,
 				E3CB65712816C51A0007B0B8 /* SearchResponse.swift in Sources */,
+				E362FD142816D33A000D4FB1 /* APITarget.swift in Sources */,
 				E37AB4E328154FCD002C2F5D /* SceneDelegate.swift in Sources */,
 				E3CB656B2816C2FA0007B0B8 /* SearchViewModel.swift in Sources */,
 				E37AB4E828155001002C2F5D /* MainSearchViewController.swift in Sources */,
+				E362FD182816D406000D4FB1 /* FetchStatusType.swift in Sources */,
+				E362FD122816D2FA000D4FB1 /* API.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,6 +9,8 @@ target 'MovieSearchApp' do
   pod 'RxSwift'
   pod 'RxRelay'
   pod 'RxCocoa'
+  pod 'Alamofire' 
+  pod 'Moya/RxSwift'
 
   # Pods for MovieSearchApp
 

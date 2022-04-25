@@ -33,7 +33,7 @@ extension SearchItemCellModel {
         model.actor
     }
     
-    var userRating: Int? {
+    var userRating: String? {
         model.userRating
     }
     
