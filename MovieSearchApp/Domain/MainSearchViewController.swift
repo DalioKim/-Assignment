@@ -41,14 +41,15 @@ class MainSearchViewController: UIViewController {
         return collectionView
     }()
     
+    private var viewModel: DefaultSearchViewModel
     private let disposeBag = DisposeBag()
     
     // MARK: - Init
     
-    init() {
+    init(viewModel: DefaultSearchViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -59,6 +60,8 @@ class MainSearchViewController: UIViewController {
         setupViews()
         bindTitle()
         bindCollectionView()
+        bindSearchBar()
+        bindViewAction()
     }
     
     // MARK: - private
@@ -69,7 +72,6 @@ class MainSearchViewController: UIViewController {
         stackView.snp.makeConstraints {
             $0.edges.equalTo(view.safeAreaLayoutGuide)
         }
-        
     }
     
     private func bindTitle() {
@@ -82,6 +84,32 @@ class MainSearchViewController: UIViewController {
     
     private func bindCollectionView() {
         collectionView.rx.setDelegate(self).disposed(by: disposeBag)
+    }
+    
+    private func bindSearchBar() {
+        searchBar.rx.searchButtonClicked
+            .asObservable()
+            .withLatestFrom(searchBar.rx.text)
+            .subscribe(onNext: { [weak self] in
+                self?.viewModel.search($0)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func bindViewAction() {
+        viewModel.viewActionObs
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                switch $0 {
+                case .showDetail(_):
+                    break
+                case .popViewController:
+                    self.navigationController?.popViewController(animated: true)
+                default:
+                    break
+                }
+            })
+            .disposed(by: disposeBag)
     }
 }
 
