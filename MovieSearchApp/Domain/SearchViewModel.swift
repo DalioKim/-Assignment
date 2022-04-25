@@ -54,7 +54,6 @@ final class DefaultSearchViewModel: SearchViewModel {
         viewActionRelay.asObservable()
     }
     
-    
     // MARK: - paging
     
     var currentPage: Int = 0
