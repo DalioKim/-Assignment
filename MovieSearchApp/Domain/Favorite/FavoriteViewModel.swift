@@ -32,6 +32,7 @@ class FavoriteViewModel {
 extension FavoriteViewModel {
     private func bindFetch() {
         guard let realm = try? Realm() else { return }
+        print("count \(realm.objects(FavoriteMovie.self).toArray().count)")
         let list = realm.objects(FavoriteMovie.self).toArray().map { $0.title }
         self.cellModelsRelay.accept(list)
     }
