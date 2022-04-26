@@ -120,10 +120,10 @@ extension SearchItemCell: Bindable {
     func bind(_ model: Any?) {
         guard let model = model as? SearchItemCellModel else { return }
         
-        titleLabel.text = model.title
-        directorLabel.text = "감독: " + (model.director ?? "정보없음")
-        actorLabel.text = "출연: " + (model.actorList ?? "정보없음")
-        userRatingLabel.text = "평점: " + (model.userRating  ?? "정보없음")
+        titleLabel.text = model.title.removeTag
+        directorLabel.text = "감독: " + (model.director ?? "").dropLast().replacingOccurrences(of: "|", with: ", ")
+        actorLabel.text = "출연: " + (model.actorList ?? "").dropLast().replacingOccurrences(of: "|", with: ", ")
+        userRatingLabel.text = "평점: " + (model.userRating  ?? "")
         guard let path = model.thumbnailImagePath, let url = URL(string: path) else { return }
         
         thumbnailImageView.kf.setImage(with: url)
