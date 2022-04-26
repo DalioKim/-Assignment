@@ -30,8 +30,8 @@ class FavoriteMovie: Object {
 struct RealmManager {
     let disposeBag = DisposeBag()
     
-    func isFavorite(title: String) -> Observable<Results<FavoriteMovie>>{
-        return favorites(title: title)
+    func isFavorite(title: String, director: String) -> Observable<Results<FavoriteMovie>>{
+        return favorites(title: title, director: director)
     }
     
     func favorite(model: SearchItemCellModel) {
@@ -42,17 +42,16 @@ struct RealmManager {
             .disposed(by: disposeBag)
     }
     
-    func favorites(title: String) -> Observable<Results<FavoriteMovie>> {
+    func favorites(title: String, director: String) -> Observable<Results<FavoriteMovie>> {
         guard let realm = try? Realm() else {
             return Observable.empty()
         }
-        //filter 2개 
-        let result = realm.objects(FavoriteMovie.self).filter(NSPredicate(format: "title == %@", title))
+        let result = realm.objects(FavoriteMovie.self).filter(NSPredicate(format: "title == %@ AND director == %@", title, director))
         return Observable.collection(from: result)
     }
     
-    func unfavorite(title: String) {
-        favorites(title: title)
+    func unfavorite(title: String, director: String) {
+        favorites(title: title, director: director)
             .subscribe(Realm.rx.delete())
             .dispose()
     }
