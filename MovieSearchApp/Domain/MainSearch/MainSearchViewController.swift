@@ -93,6 +93,12 @@ class MainSearchViewController: UIViewController {
                 return cell
             }
             .disposed(by: disposeBag)
+        
+        collectionView.rx.modelSelected(SearchItemCellModel.self)
+            .subscribe(onNext: { [weak self] in
+                self?.viewModel.didSelectItem($0)
+            })
+            .disposed(by: disposeBag)
     }
     
     private func bindSearchBar() {
@@ -110,8 +116,9 @@ class MainSearchViewController: UIViewController {
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
                 switch $0 {
-                case .showDetail(_):
-                    break
+                case .showDetail(let viewModel):
+                    let vc = DetailViewController(viewModel: viewModel)
+                    self.navigationController?.pushViewController(vc, animated: true)
                 case .popViewController:
                     self.navigationController?.popViewController(animated: true)
                 default:
