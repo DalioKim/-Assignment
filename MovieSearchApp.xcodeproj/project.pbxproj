@@ -26,6 +26,9 @@
 		E3CB656B2816C2FA0007B0B8 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CB656A2816C2FA0007B0B8 /* SearchViewModel.swift */; };
 		E3CB656D2816C3750007B0B8 /* SearchItemCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CB656C2816C3750007B0B8 /* SearchItemCellModel.swift */; };
 		E3CB65712816C51A0007B0B8 /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CB65702816C51A0007B0B8 /* SearchResponse.swift */; };
+		E3D26BB928182B980019CFDE /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D26BB828182B980019CFDE /* FavoriteViewController.swift */; };
+		E3D26BBB28182BA90019CFDE /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D26BBA28182BA90019CFDE /* FavoriteViewModel.swift */; };
+		E3D26BBD2818349D0019CFDE /* FavoriteItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D26BBC2818349D0019CFDE /* FavoriteItemCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +55,9 @@
 		E3CB656A2816C2FA0007B0B8 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		E3CB656C2816C3750007B0B8 /* SearchItemCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItemCellModel.swift; sourceTree = "<group>"; };
 		E3CB65702816C51A0007B0B8 /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
+		E3D26BB828182B980019CFDE /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		E3D26BBA28182BA90019CFDE /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
+		E3D26BBC2818349D0019CFDE /* FavoriteItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItemCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +215,7 @@
 				E318FACD2817A37A0087F55B /* Common */,
 				E318FADE2817CCF00087F55B /* MainSearch */,
 				E318FADF2817CD100087F55B /* Detail */,
+				E3D26BB728182B3F0019CFDE /* Favorite */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -237,6 +244,16 @@
 				E3CB65702816C51A0007B0B8 /* SearchResponse.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		E3D26BB728182B3F0019CFDE /* Favorite */ = {
+			isa = PBXGroup;
+			children = (
+				E3D26BB828182B980019CFDE /* FavoriteViewController.swift */,
+				E3D26BBA28182BA90019CFDE /* FavoriteViewModel.swift */,
+				E3D26BBC2818349D0019CFDE /* FavoriteItemCell.swift */,
+			);
+			path = Favorite;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -356,8 +373,10 @@
 				E318FAD62817A4210087F55B /* NSObject+ClassName.swift in Sources */,
 				E3CB656D2816C3750007B0B8 /* SearchItemCellModel.swift in Sources */,
 				E37AB4CE28154F9A002C2F5D /* AppDelegate.swift in Sources */,
+				E3D26BB928182B980019CFDE /* FavoriteViewController.swift in Sources */,
 				E318FAD22817A3AB0087F55B /* SearchItemCell.swift in Sources */,
 				E318FADA2817C1370087F55B /* String+RemoveTag.swift in Sources */,
+				E3D26BBB28182BA90019CFDE /* FavoriteViewModel.swift in Sources */,
 				E318FAE52817EBC00087F55B /* RealmManager.swift in Sources */,
 				E318FADD2817CA7E0087F55B /* UIImageView+Kingfisher.swift in Sources */,
 				E3CB65712816C51A0007B0B8 /* SearchResponse.swift in Sources */,
@@ -366,6 +385,7 @@
 				E3CB656B2816C2FA0007B0B8 /* SearchViewModel.swift in Sources */,
 				E37AB4E828155001002C2F5D /* MainSearchViewController.swift in Sources */,
 				E318FAE12817CD380087F55B /* DetailViewController.swift in Sources */,
+				E3D26BBD2818349D0019CFDE /* FavoriteItemCell.swift in Sources */,
 				E362FD182816D406000D4FB1 /* FetchStatusType.swift in Sources */,
 				E362FD122816D2FA000D4FB1 /* API.swift in Sources */,
 				E318FAE32817CD450087F55B /* DetailViewModel.swift in Sources */,

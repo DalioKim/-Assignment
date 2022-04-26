@@ -9,14 +9,14 @@ import RealmSwift
 import RxSwift
 import RxRealm
 
-class FavoriteMovie: Object {
+    class FavoriteMovie: Object {
     @objc dynamic var title = ""
     
-    convenience init(title: String) {
+    convenience init(model: SearchItemCellModel) {
         self.init()
-        self.title = title
+
+        self.title = model.title.removeTag
     }
-    
 }
 
 struct RealmManager {
@@ -26,9 +26,9 @@ struct RealmManager {
         return favorites(title: title)
     }
     
-    func favorite(title: String) {
+    func favorite(model: SearchItemCellModel) {
         print(#function)
-        let favorite = FavoriteMovie(title: title)
+        let favorite = FavoriteMovie(model: model)
         Observable.just(favorite)
             .observe(on: MainScheduler.instance)
             .subscribe(Realm.rx.add())
@@ -39,7 +39,7 @@ struct RealmManager {
         guard let realm = try? Realm() else {
             return Observable.empty()
         }
-        
+
         let result = realm.objects(FavoriteMovie.self).filter(NSPredicate(format: "title == %@", title))
         return Observable.collection(from: result)
     }

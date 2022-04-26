@@ -42,6 +42,11 @@ class MainSearchViewController: UIViewController {
         return collectionView
     }()
     
+    lazy var favoriteListButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(title: "즐겨찾기 목록", style: .plain, target: self, action: #selector(buttonPressed(_:)))
+        return button
+    }()
+
     private var viewModel: DefaultSearchViewModel
     private let disposeBag = DisposeBag()
     
@@ -79,6 +84,7 @@ class MainSearchViewController: UIViewController {
         rx.methodInvoked(#selector(viewWillAppear(_:)))
             .subscribe(onNext: { [weak self] _ in
                 self?.title = "네이버 영화 검색"
+                self?.navigationItem.rightBarButtonItem =  self?.favoriteListButton
             })
             .disposed(by: disposeBag)
     }
@@ -126,6 +132,11 @@ class MainSearchViewController: UIViewController {
                 }
             })
             .disposed(by: disposeBag)
+    }
+    
+    @objc private func buttonPressed(_ sender: Any) {
+        let vc = FavoriteViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
