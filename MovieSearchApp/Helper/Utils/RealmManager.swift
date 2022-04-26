@@ -9,13 +9,21 @@ import RealmSwift
 import RxSwift
 import RxRealm
 
-    class FavoriteMovie: Object {
-    @objc dynamic var title = ""
-    
+class FavoriteMovie: Object {
+    @Persisted var title: String = ""
+    @Persisted var thumbnailImagePath: String = ""
+    @Persisted var director: String = ""
+    @Persisted var actorList: String = ""
+    @Persisted var userRating: String = ""
+
     convenience init(model: SearchItemCellModel) {
         self.init()
-
-        self.title = model.title.removeTag
+        
+        title = model.title.removeTag
+        thumbnailImagePath = model.thumbnailImagePath ?? ""
+        director = model.director ?? ""
+        actorList = model.actorList ?? ""
+        userRating = model.userRating ?? ""
     }
 }
 
@@ -27,7 +35,6 @@ struct RealmManager {
     }
     
     func favorite(model: SearchItemCellModel) {
-        print(#function)
         let favorite = FavoriteMovie(model: model)
         Observable.just(favorite)
             .observe(on: MainScheduler.instance)
@@ -39,7 +46,7 @@ struct RealmManager {
         guard let realm = try? Realm() else {
             return Observable.empty()
         }
-
+        //filter 2개 
         let result = realm.objects(FavoriteMovie.self).filter(NSPredicate(format: "title == %@", title))
         return Observable.collection(from: result)
     }
@@ -48,5 +55,12 @@ struct RealmManager {
         favorites(title: title)
             .subscribe(Realm.rx.delete())
             .dispose()
+    }
+    
+    func getFavoriteList() -> [FavoriteMovie] {
+        guard let realm = try? Realm() else {
+            return []
+        }
+        return realm.objects(FavoriteMovie.self).toArray()
     }
 }

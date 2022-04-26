@@ -66,9 +66,9 @@ class SearchItemCell: UICollectionViewCell {
         stackView.spacing = Size.spacing
         return stackView
     }()
- 
+    
     private let favoriteView = UIImageView()
-
+    
     private let titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.textAlignment = .left
@@ -133,24 +133,28 @@ class SearchItemCell: UICollectionViewCell {
     }
     
     private func bindFavorite() {
-                
+        
         guard let title = model?.title.removeTag else { return }
         realmManager.isFavorite(title: title)
             .debug()
             .subscribe(onNext: { [weak self] (result) in
                 if result.count > 0 {
                     self?.favoriteRelay.accept(true)
+                    self?.favoriteView.image = UIImage(named: "Favorite")
                 } else {
                     self?.favoriteRelay.accept(false)
+                    self?.favoriteView.image = UIImage(named: "unFavorite")
                 }
             })
             .dispose()
         
-        favoriteRelay
-            .subscribe(onNext: { [weak self] in
+        favoriteView.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: { [weak self] _ in
                 guard let self = self, let model = self.model else { return }
-        
-                switch $0 {
+                self.favoriteRelay.accept(!self.favoriteRelay.value)
+                
+                switch self.favoriteRelay.value {
                 case true :
                     self.favoriteView.image = UIImage(named: "Favorite")
                     self.realmManager.favorite(model: model)
@@ -158,15 +162,6 @@ class SearchItemCell: UICollectionViewCell {
                     self.favoriteView.image = UIImage(named: "unFavorite")
                     self.realmManager.unfavorite(title: model.title.removeTag)
                 }
-            })
-            .disposed(by: reuseDisposeBag)
-        
-        
-        favoriteView.rx.tapGesture()
-            .when(.recognized)
-            .subscribe(onNext: { [weak self] _ in
-                guard let self = self else { return }
-                self.favoriteRelay.accept(!self.favoriteRelay.value)
             })
             .disposed(by: reuseDisposeBag)
     }
