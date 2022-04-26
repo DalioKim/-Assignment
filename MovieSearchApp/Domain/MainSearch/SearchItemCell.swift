@@ -135,7 +135,7 @@ class SearchItemCell: UICollectionViewCell {
     private func bindFavorite() {
         
         guard let title = model?.title.removeTag, let director = model?.director else { return }
-        realmManager.isFavorite(title: title,director: director)
+        realmManager.isFavorite(title: title, director: director)
             .debug()
             .subscribe(onNext: { [weak self] (result) in
                 if result.count > 0 {

@@ -51,7 +51,7 @@ struct RealmManager {
     }
     
     func unfavorite(title: String, director: String) {
-        favorites(title: title,director: director)
+        favorites(title: title, director: director)
             .subscribe(Realm.rx.delete())
             .dispose()
     }
