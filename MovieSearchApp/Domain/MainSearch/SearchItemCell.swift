@@ -6,7 +6,9 @@
 //
 
 import UIKit
-import Kingfisher
+import RxGesture
+import RxSwift
+import RxRelay
 
 class SearchItemCell: UICollectionViewCell {
     
@@ -31,7 +33,7 @@ class SearchItemCell: UICollectionViewCell {
     // MARK: - private
     
     private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [thumbnailImageView, titleStackView])
+        let stackView = UIStackView(arrangedSubviews: [thumbnailImageView, titleStackView, favoriteView])
         stackView.axis = .horizontal
         stackView.spacing = Size.spacing
         stackView.alignment = .center
@@ -42,6 +44,10 @@ class SearchItemCell: UICollectionViewCell {
         }
         titleStackView.snp.makeConstraints {
             $0.width.equalTo(100)
+        }
+        favoriteView.snp.makeConstraints {
+            $0.width.equalTo(20)
+            $0.height.equalTo(20)
         }
         
         return stackView
@@ -60,7 +66,9 @@ class SearchItemCell: UICollectionViewCell {
         stackView.spacing = Size.spacing
         return stackView
     }()
-    
+ 
+    private let favoriteView = UIImageView()
+
     private let titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.textAlignment = .left
@@ -87,6 +95,12 @@ class SearchItemCell: UICollectionViewCell {
         return userRatingLabel
     }()
     
+    private var favoriteRelay = BehaviorRelay<Bool>(value: false)
+    private var reuseDisposeBag = DisposeBag()
+    private var model: SearchItemCellModel?
+    
+    private let realmManager = RealmManager()
+    
     // MARK: - Init
     
     override init(frame: CGRect) {
@@ -99,7 +113,10 @@ class SearchItemCell: UICollectionViewCell {
     }
     
     override func prepareForReuse() {
+        reuseDisposeBag = DisposeBag()
+        
         super.prepareForReuse()
+        
         titleLabel.text = nil
         directorLabel.text = nil
         actorLabel.text = nil
@@ -114,11 +131,53 @@ class SearchItemCell: UICollectionViewCell {
             $0.top.bottom.equalToSuperview().inset(Size.verticalPadding)
         }
     }
+    
+    private func bindFavorite() {
+        
+        guard let title = model?.title.removeTag else { return }
+        realmManager.isFavorite(title: title)
+            .debug()
+            .subscribe(onNext: { [weak self] (result) in
+                if result.count > 0 {
+                    self?.favoriteRelay.accept(true)
+                } else {
+                    self?.favoriteRelay.accept(false)
+                }
+            })
+            .dispose()
+        
+        favoriteRelay
+            .subscribe(onNext: { [weak self] in
+                guard let self = self, let model = self.model else { return }
+        
+                switch $0 {
+                case true :
+                    self.favoriteView.image = UIImage(named: "Favorite")
+                    self.realmManager.favorite(title: model.title.removeTag)
+                case false:
+                    self.favoriteView.image = UIImage(named: "unFavorite")
+                    self.realmManager.unfavorite(title: model.title.removeTag)
+                }
+            })
+            .disposed(by: reuseDisposeBag)
+        
+        
+        favoriteView.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.favoriteRelay.accept(!self.favoriteRelay.value)
+            })
+            .disposed(by: reuseDisposeBag)
+    }
 }
 
 extension SearchItemCell: Bindable {
     func bind(_ model: Any?) {
         guard let model = model as? SearchItemCellModel else { return }
+        
+        self.model = model
+        bindFavorite()
         
         titleLabel.text = model.title.removeTag
         directorLabel.text = "감독: " + (model.director ?? "").dropLast().replacingOccurrences(of: "|", with: ", ")

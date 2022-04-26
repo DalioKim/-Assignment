@@ -15,6 +15,7 @@
 		E318FADD2817CA7E0087F55B /* UIImageView+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E318FADC2817CA7E0087F55B /* UIImageView+Kingfisher.swift */; };
 		E318FAE12817CD380087F55B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E318FAE02817CD380087F55B /* DetailViewController.swift */; };
 		E318FAE32817CD450087F55B /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E318FAE22817CD450087F55B /* DetailViewModel.swift */; };
+		E318FAE52817EBC00087F55B /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E318FAE42817EBC00087F55B /* RealmManager.swift */; };
 		E362FD122816D2FA000D4FB1 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = E362FD112816D2FA000D4FB1 /* API.swift */; };
 		E362FD142816D33A000D4FB1 /* APITarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E362FD132816D33A000D4FB1 /* APITarget.swift */; };
 		E362FD182816D406000D4FB1 /* FetchStatusType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E362FD172816D406000D4FB1 /* FetchStatusType.swift */; };
@@ -38,6 +39,7 @@
 		E318FADC2817CA7E0087F55B /* UIImageView+Kingfisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Kingfisher.swift"; sourceTree = "<group>"; };
 		E318FAE02817CD380087F55B /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		E318FAE22817CD450087F55B /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		E318FAE42817EBC00087F55B /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		E362FD112816D2FA000D4FB1 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		E362FD132816D33A000D4FB1 /* APITarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITarget.swift; sourceTree = "<group>"; };
 		E362FD172816D406000D4FB1 /* FetchStatusType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchStatusType.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				E362FD172816D406000D4FB1 /* FetchStatusType.swift */,
+				E318FAE42817EBC00087F55B /* RealmManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 				E37AB4CE28154F9A002C2F5D /* AppDelegate.swift in Sources */,
 				E318FAD22817A3AB0087F55B /* SearchItemCell.swift in Sources */,
 				E318FADA2817C1370087F55B /* String+RemoveTag.swift in Sources */,
+				E318FAE52817EBC00087F55B /* RealmManager.swift in Sources */,
 				E318FADD2817CA7E0087F55B /* UIImageView+Kingfisher.swift in Sources */,
 				E3CB65712816C51A0007B0B8 /* SearchResponse.swift in Sources */,
 				E362FD142816D33A000D4FB1 /* APITarget.swift in Sources */,

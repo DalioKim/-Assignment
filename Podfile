@@ -12,6 +12,8 @@ target 'MovieSearchApp' do
   pod 'Alamofire' 
   pod 'Moya/RxSwift'
   pod 'Kingfisher', '~> 6.3.0' 
+  pod 'RxGesture'
+  pod 'RxRealm'
 
   # Pods for MovieSearchApp
 
