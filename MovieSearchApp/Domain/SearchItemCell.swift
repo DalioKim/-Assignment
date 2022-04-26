@@ -47,7 +47,6 @@ class SearchItemCell: UICollectionViewCell {
         return stackView
     }()
     
-    
     private let thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -87,7 +86,6 @@ class SearchItemCell: UICollectionViewCell {
         userRatingLabel.textAlignment = .left
         return userRatingLabel
     }()
-    
     
     // MARK: - Init
     
