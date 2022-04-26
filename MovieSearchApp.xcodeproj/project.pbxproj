@@ -11,6 +11,7 @@
 		E318FAD02817A3930087F55B /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E318FACF2817A3930087F55B /* Bindable.swift */; };
 		E318FAD22817A3AB0087F55B /* SearchItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E318FAD12817A3AB0087F55B /* SearchItemCell.swift */; };
 		E318FAD62817A4210087F55B /* NSObject+ClassName.swift in Sources */ = {isa = PBXBuildFile; fileRef = E318FAD52817A4210087F55B /* NSObject+ClassName.swift */; };
+		E318FADA2817C1370087F55B /* String+RemoveTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = E318FAD92817C1370087F55B /* String+RemoveTag.swift */; };
 		E362FD122816D2FA000D4FB1 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = E362FD112816D2FA000D4FB1 /* API.swift */; };
 		E362FD142816D33A000D4FB1 /* APITarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E362FD132816D33A000D4FB1 /* APITarget.swift */; };
 		E362FD182816D406000D4FB1 /* FetchStatusType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E362FD172816D406000D4FB1 /* FetchStatusType.swift */; };
@@ -30,6 +31,7 @@
 		E318FACF2817A3930087F55B /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
 		E318FAD12817A3AB0087F55B /* SearchItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItemCell.swift; sourceTree = "<group>"; };
 		E318FAD52817A4210087F55B /* NSObject+ClassName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+ClassName.swift"; sourceTree = "<group>"; };
+		E318FAD92817C1370087F55B /* String+RemoveTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+RemoveTag.swift"; sourceTree = "<group>"; };
 		E362FD112816D2FA000D4FB1 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		E362FD132816D33A000D4FB1 /* APITarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITarget.swift; sourceTree = "<group>"; };
 		E362FD172816D406000D4FB1 /* FetchStatusType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchStatusType.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				E318FAD52817A4210087F55B /* NSObject+ClassName.swift */,
+				E318FAD92817C1370087F55B /* String+RemoveTag.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				E3CB656D2816C3750007B0B8 /* SearchItemCellModel.swift in Sources */,
 				E37AB4CE28154F9A002C2F5D /* AppDelegate.swift in Sources */,
 				E318FAD22817A3AB0087F55B /* SearchItemCell.swift in Sources */,
+				E318FADA2817C1370087F55B /* String+RemoveTag.swift in Sources */,
 				E3CB65712816C51A0007B0B8 /* SearchResponse.swift in Sources */,
 				E362FD142816D33A000D4FB1 /* APITarget.swift in Sources */,
 				E37AB4E328154FCD002C2F5D /* SceneDelegate.swift in Sources */,
