@@ -29,7 +29,7 @@ extension SearchItemCellModel {
         model.director
     }
     
-    var actor: String? {
+    var actorList: String? {
         model.actor
     }
     
