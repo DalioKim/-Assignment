@@ -38,6 +38,7 @@ class MainSearchViewController: UIViewController {
         layout.scrollDirection = .vertical
         layout.sectionInset = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.register(SearchItemCell.self, forCellWithReuseIdentifier: SearchItemCell.className)
         return collectionView
     }()
     
@@ -84,6 +85,14 @@ class MainSearchViewController: UIViewController {
     
     private func bindCollectionView() {
         collectionView.rx.setDelegate(self).disposed(by: disposeBag)
+        viewModel.cellModelsObs
+            .bind(to: collectionView.rx.items) { collectionView, index, cellModel in
+                let indexPath = IndexPath(item: index, section: 0)
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchItemCell.className, for: indexPath)
+                (cell as? Bindable).map { $0.bind(cellModel) }
+                return cell
+            }
+            .disposed(by: disposeBag)
     }
     
     private func bindSearchBar() {
@@ -118,6 +127,6 @@ class MainSearchViewController: UIViewController {
 extension MainSearchViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.frame.size.width - 20
-        return CGSize(width: width, height: 200)
+        return CGSize(width: width, height: 120)
     }
 }

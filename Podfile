@@ -11,6 +11,7 @@ target 'MovieSearchApp' do
   pod 'RxCocoa'
   pod 'Alamofire' 
   pod 'Moya/RxSwift'
+  pod 'Kingfisher', '~> 6.3.0' 
 
   # Pods for MovieSearchApp
 
