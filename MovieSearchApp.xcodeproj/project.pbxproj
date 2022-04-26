@@ -29,6 +29,7 @@
 		E3D26BB928182B980019CFDE /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D26BB828182B980019CFDE /* FavoriteViewController.swift */; };
 		E3D26BBB28182BA90019CFDE /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D26BBA28182BA90019CFDE /* FavoriteViewModel.swift */; };
 		E3D26BBD2818349D0019CFDE /* FavoriteItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D26BBC2818349D0019CFDE /* FavoriteItemCell.swift */; };
+		E3D26BBF281867910019CFDE /* FavoriteItemCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D26BBE281867910019CFDE /* FavoriteItemCellModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		E3D26BB828182B980019CFDE /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		E3D26BBA28182BA90019CFDE /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
 		E3D26BBC2818349D0019CFDE /* FavoriteItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItemCell.swift; sourceTree = "<group>"; };
+		E3D26BBE281867910019CFDE /* FavoriteItemCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItemCellModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -252,6 +254,7 @@
 				E3D26BB828182B980019CFDE /* FavoriteViewController.swift */,
 				E3D26BBA28182BA90019CFDE /* FavoriteViewModel.swift */,
 				E3D26BBC2818349D0019CFDE /* FavoriteItemCell.swift */,
+				E3D26BBE281867910019CFDE /* FavoriteItemCellModel.swift */,
 			);
 			path = Favorite;
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 				E3D26BB928182B980019CFDE /* FavoriteViewController.swift in Sources */,
 				E318FAD22817A3AB0087F55B /* SearchItemCell.swift in Sources */,
 				E318FADA2817C1370087F55B /* String+RemoveTag.swift in Sources */,
+				E3D26BBF281867910019CFDE /* FavoriteItemCellModel.swift in Sources */,
 				E3D26BBB28182BA90019CFDE /* FavoriteViewModel.swift in Sources */,
 				E318FAE52817EBC00087F55B /* RealmManager.swift in Sources */,
 				E318FADD2817CA7E0087F55B /* UIImageView+Kingfisher.swift in Sources */,

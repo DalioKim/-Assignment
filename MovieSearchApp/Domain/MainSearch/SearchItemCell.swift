@@ -67,22 +67,7 @@ class SearchItemCell: UICollectionViewCell {
         return stackView
     }()
     
-    private lazy var favoriteView: UIImageView = {
-        let imageView = UIImageView()
-//        favoriteRelay
-//            .subscribe(onNext: { [weak self] in
-//                guard let self = self, let model = self.model else { return }
-//                switch $0 {
-//                case true :
-//                    imageView.image = UIImage(named: "Favorite")
-//                case false:
-//                    imageView.image = UIImage(named: "unFavorite")
-//                }
-//            })
-//            .dispose()
-
-        return imageView
-    }()
+    private let favoriteView = UIImageView()
     
     private let titleLabel: UILabel = {
         let titleLabel = UILabel()
@@ -162,20 +147,6 @@ class SearchItemCell: UICollectionViewCell {
                 }
             })
             .dispose()
-        //
-        //        favoriteRelay
-        //            .subscribe(onNext: { [weak self] in
-        //                guard let self = self, let model = self.model else { return }
-        //
-        //                switch $0 {
-        //                case true :
-        //                    self.favoriteView.image = UIImage(named: "Favorite")
-        //                    self.realmManager.favorite(model: model)
-        //                case false:
-        //                    self.realmManager.unfavorite(title: model.title.removeTag)
-        //                }
-        //            })
-        //            .disposed(by: reuseDisposeBag)
         
         favoriteView.rx.tapGesture()
             .when(.recognized)
@@ -191,7 +162,6 @@ class SearchItemCell: UICollectionViewCell {
                     self.favoriteView.image = UIImage(named: "unFavorite")
                     self.realmManager.unfavorite(title: model.title.removeTag)
                 }
-                
             })
             .disposed(by: reuseDisposeBag)
     }

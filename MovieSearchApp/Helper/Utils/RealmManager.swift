@@ -10,16 +10,20 @@ import RxSwift
 import RxRealm
 
 class FavoriteMovie: Object {
-    @objc dynamic var title = ""
-//    @objc dynamic var thumbnailImagePath = ""
-//    @objc dynamic var director = ""
-    
+    @Persisted var title: String = ""
+    @Persisted var thumbnailImagePath: String = ""
+    @Persisted var director: String = ""
+    @Persisted var actorList: String = ""
+    @Persisted var userRating: String = ""
+
     convenience init(model: SearchItemCellModel) {
         self.init()
         
-        self.title = model.title.removeTag
-//        self.thumbnailImagePath = model.thumbnailImagePath ?? ""
-//        self.director = model.director ?? ""
+        title = model.title.removeTag
+        thumbnailImagePath = model.thumbnailImagePath ?? ""
+        director = model.director ?? ""
+        actorList = model.actorList ?? ""
+        userRating = model.userRating ?? ""
     }
 }
 
@@ -31,7 +35,6 @@ struct RealmManager {
     }
     
     func favorite(model: SearchItemCellModel) {
-        print(#function)
         let favorite = FavoriteMovie(model: model)
         Observable.just(favorite)
             .observe(on: MainScheduler.instance)
@@ -49,16 +52,15 @@ struct RealmManager {
     }
     
     func unfavorite(title: String) {
-        guard let realm = try? Realm() else {
-            return
-        }
-        
-        print("삭제 전 count \(realm.objects(FavoriteMovie.self).count)")
-        
         favorites(title: title)
             .subscribe(Realm.rx.delete())
             .dispose()
-        print("삭제 후 count \(realm.objects(FavoriteMovie.self).count)")
-        
+    }
+    
+    func getFavoriteList() -> [FavoriteMovie] {
+        guard let realm = try? Realm() else {
+            return []
+        }
+        return realm.objects(FavoriteMovie.self).toArray()
     }
 }
