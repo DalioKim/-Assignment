@@ -134,8 +134,8 @@ class SearchItemCell: UICollectionViewCell {
     
     private func bindFavorite() {
         
-        guard let title = model?.title.removeTag else { return }
-        realmManager.isFavorite(title: title)
+        guard let title = model?.title.removeTag, let director = model?.director else { return }
+        realmManager.isFavorite(title: title,director: director)
             .debug()
             .subscribe(onNext: { [weak self] (result) in
                 if result.count > 0 {
@@ -160,7 +160,7 @@ class SearchItemCell: UICollectionViewCell {
                     self.realmManager.favorite(model: model)
                 case false:
                     self.favoriteView.image = UIImage(named: "unFavorite")
-                    self.realmManager.unfavorite(title: model.title.removeTag)
+                    self.realmManager.unfavorite(title: model.title.removeTag, director: (model.director ?? ""))
                 }
             })
             .disposed(by: reuseDisposeBag)
