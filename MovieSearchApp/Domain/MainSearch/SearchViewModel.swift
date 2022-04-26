@@ -29,7 +29,7 @@ final class DefaultSearchViewModel: SearchViewModel {
     
     enum DefaultSearchViewAction {
         case popViewController
-        case showDetail(itemNo: Int)
+        case showDetail(viewModel: DetailViewModel)
         case showFeature(itemNo: Int)
     }
     
@@ -120,5 +120,7 @@ extension DefaultSearchViewModel {
         refresh()
     }
     
-    func didSelectItem(_ model: SearchItemCellModel) {}
+    func didSelectItem(_ model: SearchItemCellModel) {
+        viewActionRelay.accept(ViewAction.showDetail(viewModel: DetailViewModel(model: model)))
+    }
 }
