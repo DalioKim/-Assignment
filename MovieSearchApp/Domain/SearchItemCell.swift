@@ -100,11 +100,11 @@ class SearchItemCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        thumbnailImageView.image = nil
         titleLabel.text = nil
         directorLabel.text = nil
         actorLabel.text = nil
         userRatingLabel.text = nil
+        thumbnailImageView.clear()
     }
     
     func setupViews() {
@@ -124,8 +124,6 @@ extension SearchItemCell: Bindable {
         directorLabel.text = "감독: " + (model.director ?? "").dropLast().replacingOccurrences(of: "|", with: ", ")
         actorLabel.text = "출연: " + (model.actorList ?? "").dropLast().replacingOccurrences(of: "|", with: ", ")
         userRatingLabel.text = "평점: " + (model.userRating  ?? "")
-        guard let path = model.thumbnailImagePath, let url = URL(string: path) else { return }
-        
-        thumbnailImageView.kf.setImage(with: url)
+        thumbnailImageView.setImage(model.thumbnailImagePath)
     }
 }
